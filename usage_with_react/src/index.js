@@ -5,8 +5,11 @@ import { createStore } from 'redux'
 import rootReducer from './reducers'
 import App from './components/App'
 
+// reduxのStoreの作成
 const store = createStore(rootReducer)
 
+
+// Reactに連携させるReduxのStoreを渡すのがProvider、 こうすることで、ReactとReduxが連携される。
 render(
   <Provider store={store}>
     <App />

@@ -11,14 +11,17 @@ const getVisibleTodos = (todos, filter) => {
       return todos.filter(t => t.completed)
     case VisibilityFilters.SHOW_ACTIVE:
       return todos.filter(t => !t.completed)
+    case VisibilityFilters.DELETE_ALL:
+      return 'pass'
     default:
       throw new Error('Unknown filter: ' + filter)
   }
 }
 
-const mapStateToProps = state => ({
-  todos: getVisibleTodos(state.todos, state.visibilityFilter)
-})
+const mapStateToProps = state => {
+  console.log(state)
+  return { todos: getVisibleTodos(state.todos, state.visibilityFilter) }
+}
 
 const mapDispatchToProps = dispatch => ({
   toggleTodo: id => dispatch(toggleTodo(id))
