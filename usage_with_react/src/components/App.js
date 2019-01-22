@@ -7,7 +7,7 @@ import TopMain from './TopMain'
 import ButtonAppBar from './ButtonAppBar'
 import UserRegister from './UserRegister'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
-import { reduxForm, Field } from 'redux-form';
+// import { reduxForm, Field } from 'redux-form';
 
 
 const App = () => (

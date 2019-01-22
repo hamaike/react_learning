@@ -4,8 +4,12 @@ import { Provider } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
 import rootReducer from './reducers'
 import App from './components/App'
-import { reducer as formReducer } from 'redux-form';
+// import { reducer as formReducer } from 'redux-form';
 
+// made for redux
+// const initialState = {
+//   name: ''
+// };
 
 // reduxのStoreの作成
 const store = createStore(rootReducer)

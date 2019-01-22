@@ -1,79 +1,68 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+// import classNames from 'classnames';
+// import MenuItem from '@material-ui/core/MenuItem';
+
+const styles = theme => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+    },
+    dense: {
+      marginTop: 16,
+    },
+    menu: {
+      width: 200,
+    },
+});
 
 
-let SignInForm = props => {
-    return <form className="form">
-      <div className="field">
-        <div className="control">
-          <label className="label">First Name</label>
-        </div>
-      </div>
-  
-      <div className="field">
-        <div className="control">
-          <label className="label">Last Name</label>
-        </div>
-      </div>
-  
-      <div className="field">
-        <div className="control">
-          <label className="label">Email</label>
-        </div>
-      </div>
-  
-      <div className="field">
-        <div className="control">
-          <label className="label">Proficiency</label>
-          <div className="select">
-              <option />
-              <option value="beginner">Beginner Dev</option>
-              <option value="intermediate">Intermediate Dev</option>
-              <option value="expert">Expert Dev</option>
-          </div>
-        </div>
-      </div>
-  
-      <div className="field">
-        <div className="control">
-          <label className="label">Age</label>
-        </div>
-      </div>
-  
-      <div className="field">
-        <div className="control">
-          <label className="label">Gender</label>
-          <label className="radio">
-            {' '}
-            Male
-          </label>
-          <label className="radio">
-            {' '}
-            Female
-          </label>
-        </div>
-      </div>
-  
-      <div className="field">
-        <div className="control">
-          <label className="checkbox">
-            Save Details
-          </label>
-        </div>
-      </div>
-  
-      <div className="field">
-        <div className="control">
-          <label className="label">Message</label>
-        </div>
-      </div>
-  
-      <div className="field">
-        <div className="control">
-          <button className="button is-link">Submit</button>
-        </div>
-      </div>
-  
-    </form>;
-  };
+class UserRegister extends React.Component {
+    state = {
+        name: 'Cat in the Hat',
+    };
 
-  export default SignInForm;
+    handleChange = name => event => {
+        event.preventDefault()
+        console.log(event)
+        this.setState({
+          [name]: event.target.value,
+        });
+    };
+    // onChange={this.handleChange('name')}
+    
+    render() {
+        const { classes } = this.props;
+
+        return (
+            <form className={classes.container} noValidate autoComplete="off">
+                <TextField
+                    id="outlined-name"
+                    label="苗字"
+                    className={classes.textField}
+                    value={this.state.name}
+                    onChange={this.handleChange('name')}
+                    margin="normal"
+                    variant="outlined"
+                    
+                />
+            </form>
+
+        )
+    } 
+
+}
+
+
+
+UserRegister.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(UserRegister);
